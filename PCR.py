@@ -87,3 +87,15 @@ MatrizDatosM = np.matrix(Maligno.T)
 # hago por aparte benignos y malignos
 ProyeccionesB = ComponentesPrincipales.transpose()*MatrizDatosB
 ProyeccionesM = ComponentesPrincipales.transpose()*MatrizDatosM
+
+plt.scatter(ProyeccionesB[0,:], ProyeccionesB[1,:],alpha=0.5)
+plt.scatter(ProyeccionesM[0,:], ProyeccionesM[1,:], c='black', alpha=0.5)
+plt.xlabel('Componente Principal 1')
+plt.xlabel('Componente Principal 2')
+plt.title("Proyeccion de componentes principales. Maligno mostrado en negro y 50% de transparencia")
+# zoom en la zona donde se traslapan
+plt.xlim([-2000,0])
+plt.ylim([-400,0])
+plt.savefig('CuervoCamilo_PCA.pdf')
+
+print("En la imagen de las proyecciones que se presenta se ha hecho un zoom en la zona de interes para demostrar que los diagnosticos benignos se aglomeran en una zona definida, aunque las fronteras de esta zona son difusas entre puntos de diagnostico benigno y maligno. En general esta grafica muestra que hay potencial para usar PCA como una herramienta para evaluar si las mediciones indican un tumor Benigno o maligno. Pero tratandose de un tema tan delicado e importante, la informacion suministrada no es suficiente para desarrollar una herramienta confiable")
